@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js App</title>
+
+  <link rel="stylesheet" href="put-todolist.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>ToDoリスト！</h1>
+
+    <h2>新しいタスクの追加</h2>
+    <form class="add-form">
+      新しいタスク<input type="text" ref="comment" />
+      期限<input type="date" ref="day" />
+      <button type="button"  v-on:click.prevent="doAdd">追加</button>
+    </form>
+
+    <h2>タスクリスト</h2>
+   <p>※削除ボタンは、[Ctrl]キーを押しながらクリックして下さい。</p>
+   <p>※編集のキャンセルは、[Shift]キーを押しながら、クリックしてください</p>
+    <table>
+      <thead>
+        <tr>
+          <th class="comment">タスク名</th>
+          <th class="day">期限</th>
+          <th class="state">状態</th>
+          <th class="edit"></th>
+          <th class="button"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr v-for="item in todos" v-bind:class="{done:item.state}">
+            <td>
+              <label v-show="!item.editform">{{ item.comment }}</label>
+              <label v-show="item.editform"><input type="text" v-model= "item.comment" /></label>
+            </td>
+            <td class="day">
+              <label v-show="!item.editform">{{ item.day }}</label>
+              <label v-show="item.editform"><input type="date" v-model="item.day" /></label>
+            </td>
+            <td class="state">
+              <button type="button" v-on:click="doChangeState(item)" v-show="item.state">完了</button>
+              <button type="button" v-on:click="doChangeState(item)" v-show="!item.state">作業中</button>
+            </td>
+            <td class="edit">
+              <button type="button" v-on:click="doCommentform(item)" v-show="!item.editform">編集</button>
+              <div v-show="item.editform">
+              <button type="button" v-on:click="doChangeComment(item)">保存</button>
+              <button type="button" v-on:click.shift="doeditstop()">キャンセル</button>
+              </div>
+            </td>
+            <td class="button">
+              <button type="button" v-on:click.ctrl="doRemove(item)">削除</button>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="put-todolist.js"></script>
+
+</body>
+</html>
