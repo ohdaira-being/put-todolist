@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue.js App</title>
+  <title>app</title>
 
   <link rel="stylesheet" href="put-todolist.css">
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -51,7 +51,7 @@
               <button type="button" v-on:click="doCommentform(item)" v-show="!item.editform">編集</button>
               <div v-show="item.editform">
               <button type="button" v-on:click="doChangeComment(item)">保存</button>
-              <button type="button" v-on:click.shift="doeditstop()">キャンセル</button>
+              <button type="button" v-on:click.shift="doeditstop(item)">キャンセル</button>
               </div>
             </td>
             <td class="button">
