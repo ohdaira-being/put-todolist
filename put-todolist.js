@@ -1,15 +1,15 @@
-new Vue({
+var Vue = new Vue({
   el: "#app",
   data: {
     todos: [],
   },
 
-  mounted() {
-    if (localStorage.getItem('todos')) {
+  mounted:function() {
+    if (localStorage.getItem("todos")) {
       try {
-        this.todos = JSON.parse(localStorage.getItem('todos'));
+        this.todos = JSON.parse(localStorage.getItem("todos"));
       } catch(e) {
-        localStorage.removeItem('todos');
+        localStorage.removeItem("todos");
       }
     }
   },
@@ -32,33 +32,34 @@ new Vue({
       this.savetodos();
     },
 
+    doChangeState: function (item) {
+      item.state = !item.state ? true : false;
+      this.savetodos();
+    },
+    
     doCommentform: function (item) {
       item.editform = !item.editform ? true : false;
     },
-
+    
     doChangeComment: function(item){
       item.editform = !item.editform ? true : false;
       this.savetodos();
     },
 
-    doChangeState: function (item) {
-      item.state == true ? item.state = false : item.state = true
-      this.savetodos();
+    doeditstop: function(item){
+      window.location.reload();
+      item.editform = false;
     },
-
+    
     doRemove: function (item) {
       var index = this.todos.indexOf(item);
       this.todos.splice(index, 1);
       this.savetodos();
     },
 
-    doeditstop: function(){
-      window.location.reload();
-    },
-
-    savetodos(){
-      const parsed = JSON.stringify(this.todos);
-      localStorage.setItem('todos', parsed);
+    savetodos: function(){
+      var parsed = JSON.stringify(this.todos);
+      localStorage.setItem("todos", parsed);
     }
   },
 });
