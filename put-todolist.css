@@ -1,0 +1,80 @@
+#app {
+  max-width: 80%;
+  margin: 0 auto;
+}
+table {
+  width: 100%;
+  border: 1px solid rgb(136, 136, 136);
+  border-collapse: collapse;
+}
+thead th {
+  border-bottom: 2px solid #0099e4; /*#d31c4a */
+  color: white;
+  background-color: rgb(8, 8, 8);
+}
+
+th {
+  padding: 0 8px;
+  line-height: 40px;
+}
+thead th.day {
+  width: 120px;
+}
+thead th.state {
+  width: 70px;
+}
+tbody th.edit {
+  width: 100px;
+}
+thead th.button {
+  width: 50px;
+}
+
+td {
+  line-height: 20px;
+  height: 50px;
+}
+tbody th.comment {
+  border-left: 1px solid #ccc;
+}
+tbody td.day {
+  width: 120px;
+}
+tbody td.state {
+  width: 70px;
+}
+tbody td.edit {
+  width: 100px;
+}
+tbody td.button {
+  width: 50px;
+}
+
+tbody td.button,
+tbody td.state,
+tbody td.edit {
+  text-align: center;
+}
+tbody tr td,
+tbody tr th {
+  border-bottom: 1px dashed #ccc;
+  transition: all 0.4s;
+}
+tbody tr.done td,
+tbody tr.done th {
+  background: #f8f8f8;
+  color: #bbb;
+}
+tbody tr:hover td,
+tbody tr:hover th {
+  background: #8bc9ed;
+}
+button {
+  border: none;
+  border-radius: 20px;
+  line-height: 24px;
+  padding: 0 8px;
+  background: #0099e4;
+  color: #fff;
+  cursor: pointer;
+}
